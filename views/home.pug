@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title ScriptCraft Editor
+    link(href='/main.css' rel='stylesheet')
+    script(src='/main.js')
+  body
+    .header
+      h1 ScriptCraft Editor
+      h3 Automate Minecraft by writing JavaScript functions.
+    div
+      if missingPlayerName
+        h3.errorMessage Cannot find player named #{missingPlayerName}
+      h2 Enter your Minecraft player name
+      form.bigForm(onsubmit="return onSubmitPlayerName(this);")
+        input(type="text", name="playerName", placeholder="Player_Name", autofocus)
+        input(type="submit", value="Go")
+        p
+          i Hint: open Minecraft and hold Tab to see your player name.

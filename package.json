@@ -1,0 +1,31 @@
+{
+  "name": "scriptcraft-editor",
+  "version": "0.0.1",
+  "description": "Scriptcraft Editor",
+  "main": "src/index.js",
+  "author": "Neal Ehardt",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NealEhardt/scriptcraft-editor.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "codemirror": "^5.18.2",
+    "express": "^4.14.0",
+    "lodash": "^4.0.8",
+    "pug": "^2.0.0-beta6",
+    "rimraf": "^2.5.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rimraf build",
+    "start": "node ./src/index.js",
+    "test": "echo \"no tests yet\" && exit 0"
+  },
+  "readmeFilename": "README.md",
+  "keywords": [
+    "scriptcraft",
+    "code-editor"
+  ]
+}

@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    title #{assignment} - #{playerName} - ScriptCraft Editor
+    link(href='/main.css' rel='stylesheet')
+    link(href='/codemirror/codemirror.css' rel='stylesheet')
+    script(src='/codemirror/codemirror.js')
+    script(src='/codemirror/mode/javascript/javascript.js')
+    script(src='/main.js')
+  body
+    div
+      a(href="/"+playerName) #{playerName}
+      |  / #{assignment}
+      span(style="float: right") This document autosaves.
+      div.errorMessage(style="visibility:hidden") Boo!
+    script.
+      setupCodeMirror("!{codeValue.replace(/\n/g, '\\n').replace(/\"/g, '\\"').replace(/\//g, '\\/')}");

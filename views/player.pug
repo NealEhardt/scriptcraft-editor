@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+  head
+    title #{playerName} - ScriptCraft Editor
+    link(href='/main.css' rel='stylesheet')
+  body
+    .header
+      h1= playerName
+    ul
+      each assn in assignments
+        li
+          a(href="/"+playerName+"/"+assn)= assn
