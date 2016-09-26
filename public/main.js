@@ -15,13 +15,13 @@ function setupCodeMirror(codeValue) {
   cm.on('change', function() {
     var value = cm.getValue();
     validateCode(value);
-    persistToServer(value);
+    saveCode(value);
   });
   validateCode(cm.getValue());
 }
 
 function validateCode(codeValue) {
-  var errorDiv = document.querySelector('.errorMessage');
+  var errorDiv = document.querySelector('div.errorMessage');
   try {
     var require = function () {};
     var exports = {};
@@ -34,10 +34,16 @@ function validateCode(codeValue) {
   errorDiv.style.visibility = 'hidden';
 }
 
+var lastActivityDate = null;
+
+function saveCode(codeValue) {
+  lastActivityDate = new Date();
+  persistToServer(codeValue)
+}
+
 var xhr = null;
 var pendingPut = null;
 var pendingTimeout = null;
-var lastPutDate = null;
 var debounceTimeMs = 1000;
 
 function persistToServer(codeValue) {
@@ -46,30 +52,37 @@ function persistToServer(codeValue) {
     return;
   }
 
+  var saveDiv = document.querySelector('div.saveMessage');
+  saveDiv.className = 'saveMessage';
+  saveDiv.textContent = 'Saving...';
+
   var date = new Date();
-  var msSinceLastPut = date - lastPutDate;
-  if (lastPutDate !== null && msSinceLastPut < debounceTimeMs) {
+  var waitTime = debounceTimeMs - (date - lastActivityDate);
+  if (waitTime > 0) {
     pendingPut = codeValue;
     pendingTimeout = setTimeout(function () {
       pendingTimeout = null;
       persistToServer(pendingPut);
-    }, debounceTimeMs - msSinceLastPut);
+    }, waitTime);
     return;
   }
 
   pendingPut = null;
-  lastPutDate = date;
+  lastActivityDate = date;
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        console.log('saved');
+        saveDiv.className = 'saveMessage hidden';
+        saveDiv.textContent = '✔ Saved';
       } else {
-        console.error('save error!', xhr.status);
+        saveDiv.className = 'saveMessage';
+        saveDiv.textContent = 'Save error! ' + xhr.status;
       }
 
       xhr = null;
       if (pendingPut) {
+        console.log('pending put persist');
         persistToServer(pendingPut);
       }
     }

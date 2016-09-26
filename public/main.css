@@ -31,6 +31,10 @@ body, header {
   flex-direction: column;
 }
 
+.saveMessage {
+  float: right;
+}
+
 .hidden {
   visibility: hidden;
   opacity: 0;

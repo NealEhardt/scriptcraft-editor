@@ -11,7 +11,7 @@ html(lang="en")
     div
       a(href="/"+playerName) #{playerName}
       |  / #{assignment}
-      span(style="float: right") This document autosaves.
-      div.errorMessage(style="visibility:hidden") Boo!
+      div.saveMessage This document autosaves.
+      div.errorMessage(style="visibility:hidden") Error goes here
     script.
       setupCodeMirror("!{codeValue.replace(/\n/g, '\\n').replace(/\"/g, '\\"').replace(/\//g, '\\/')}");
