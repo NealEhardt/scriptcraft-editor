@@ -1,3 +1,4 @@
 module.exports = {
-  spigotDir: '..'
+  spigotDir: '..',
+  assignmentsDir: '_assignments'
 };

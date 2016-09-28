@@ -20,7 +20,10 @@ cd scriptcraft-editor
 npm install && npm start
 ```
 
-You can browse to `http://localhost:8089` to start editing.
+Browse to `http://localhost:8089` to start editing.
+
+Add files to scriptcraft/players/_assignments and they will be copied to
+player directories when the player opens the web app.
 
 
 # Running in parallel with Spigot

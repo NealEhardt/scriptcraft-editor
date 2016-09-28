@@ -10,9 +10,11 @@
     "url": "https://github.com/NealEhardt/scriptcraft-editor.git"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "^1.15.2",
     "codemirror": "^5.18.2",
     "express": "^4.14.0",
+    "fs-extra": "^0.30.0",
     "lodash": "^4.0.8",
     "pug": "^2.0.0-beta6",
     "rimraf": "^2.5.4"

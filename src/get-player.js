@@ -1,5 +1,6 @@
 const fs = require('fs');
 const config = require('./config');
+const writeAssignments = require('./write-assignments');
 
 module.exports = function getPlayer(req, res, next) {
   const playerName = req.params.playerName;
@@ -11,9 +12,13 @@ module.exports = function getPlayer(req, res, next) {
       return void res.render('home', { missingPlayerName: playerName });
     }
 
-    fs.readdir(playersPath + '/' + playerName, (err, assignments) => {
+    writeAssignments(playerName, (err) => {
       if (err) return void next(err);
-      res.render('player', { playerName: playerName, assignments: assignments });
+
+      fs.readdir(playersPath + '/' + playerName, (err, assignments) => {
+        if (err) return void next(err);
+        res.render('player', { playerName: playerName, assignments: assignments });
+      });
     });
   });
 };
