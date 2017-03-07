@@ -38,7 +38,7 @@ var lastActivityDate = null;
 
 function saveCode(codeValue) {
   lastActivityDate = new Date();
-  persistToServer(codeValue)
+  persistToServer(codeValue);
 }
 
 var xhr = null;

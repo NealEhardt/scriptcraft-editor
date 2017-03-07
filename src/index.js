@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const config = require('./config');
 const getHome = require('./get-home');
 const getPlayer = require('./get-player');
 const getAssignment = require('./get-assignment');
@@ -20,7 +21,6 @@ app.get('/:playerName', getPlayer);
 app.get('/:playerName/:assignment', getAssignment);
 app.put('/:playerName/:assignment', putAssignment);
 
-const port = 8089;
-app.listen(port, function () {
-  console.log('ScriptCraft Editor serving on port', port);
+app.listen(config.port, () => {
+  console.log('ScriptCraft Editor serving on port', config.port);
 });

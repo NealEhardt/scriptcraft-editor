@@ -10,13 +10,13 @@ module.exports = function getAssignment(req, res, next) {
     if (err) return void next(err);
 
     const path = config.spigotDir + '/scriptcraft/players/' + playerName + '/' + assignment;
-    fs.readFile(path, 'utf8', (err, data) => {
+    fs.readFile(path, 'utf8', (err, codeValue) => {
       if (err) return void next(err);
 
       res.render('assignment', {
         assignment: req.params.assignment,
         playerName: req.params.playerName,
-        codeValue: data
+        codeValue
       });
     });
   });

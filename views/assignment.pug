@@ -14,4 +14,4 @@ html(lang="en")
       div.saveMessage This document autosaves.
       div.errorMessage(style="visibility:hidden") Error goes here
     script.
-      setupCodeMirror("!{codeValue.replace(/\n/g, '\\n').replace(/\"/g, '\\"').replace(/\//g, '\\/')}");
+      setupCodeMirror("!{codeValue.replace(/\r?\n/g, '\\n').replace(/\"/g, '\\"').replace(/\//g, '\\/')}");

@@ -9,10 +9,10 @@ MineCraft server.
 # Getting Started
 
 Set up [ScriptCraft](https://github.com/walterhiggins/ScriptCraft/).
-Make sure you have [Node.js 4+](https://nodejs.org) and NPM 3+ installed.
+Make sure you have [Node.js 6+](https://nodejs.org) and NPM 3+ installed.
 
 In the Minecraft server directory
-(where you run `java -jar spigot-1.10.2.jar` or similar):
+(where you run `java -jar spigot-1.11.2.jar` or similar):
 
 ```shell
 git clone https://github.com/NealEhardt/scriptcraft-editor.git
@@ -22,7 +22,7 @@ npm install && npm start
 
 Browse to `http://localhost:8089` to start editing.
 
-Add files to scriptcraft/players/_assignments and they will be copied to
+Add files to ~/Documents/ScriptCraft_assn and they will be copied to
 player directories when the player opens the web app.
 
 
